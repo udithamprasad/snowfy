@@ -17,19 +17,25 @@
 </head>
 
 <body>
-  <audio id="bg-music" loop>
+  <audio id="bg-music" autoplay loop muted>
   <source src="music/OurstoKeep.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
 <script>
-  window.addEventListener("click", function () {
+  document.addEventListener("DOMContentLoaded", () => {
     const music = document.getElementById("bg-music");
-    music.play().catch((err) => {
-      console.log("Autoplay blocked:", err);
-    });
-  }, { once: true });
+
+    // Unmute and play when user interacts (click/tap)
+    window.addEventListener("click", () => {
+      music.muted = false;
+      music.play().catch((err) => {
+        console.log("Music play error:", err);
+      });
+    }, { once: true });
+  });
 </script>
+
 
 
   <div class="bg" id="content">
