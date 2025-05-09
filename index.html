@@ -26,17 +26,15 @@
   document.addEventListener("DOMContentLoaded", () => {
     const music = document.getElementById("bg-music");
 
-    // Unmute and play when user interacts (click/tap)
+    // Play after first user interaction
     window.addEventListener("click", () => {
       music.muted = false;
       music.play().catch((err) => {
-        console.log("Music play error:", err);
+        console.warn("Music playback failed:", err);
       });
     }, { once: true });
   });
 </script>
-
-
 
   <div class="bg" id="content">
 
